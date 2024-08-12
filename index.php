@@ -38,8 +38,10 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   }
 }
 
-// I pick up all departments
-$departments = getAllDepartments($connection);
+if(isset($_SESSION["user_id"]) && isset($_SESSION["username"])) {
+  // I pick up all departments
+  $departments = getAllDepartments($connection);
+}
 
 // Close connection with database 
 $connection->close();
