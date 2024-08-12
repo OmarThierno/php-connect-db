@@ -3,11 +3,16 @@ require_once __DIR__ . "/Models/department.php";
 require_once __DIR__ . "/helpers/database-conn.php";
 require_once __DIR__ . "/helpers/departments-funcion.php";
 
+// Session 
+if (!isset($_SESSION)) {
+  session_start();
+}
+
 // Start connection with database 
 $connection = startConnection();
 
 // check your login
-if(isset($_POST["username"]) && isset($_POST["password"])) {
+if (isset($_POST["username"]) && isset($_POST["password"])) {
   $usename = $_POST["username"];
   $password = $_POST["password"];
 
@@ -17,12 +22,20 @@ if(isset($_POST["username"]) && isset($_POST["password"])) {
   // $sql = "SELECT * FROM `users` WHERE `username` = '$usename' AND `password` = '$hashedPassword';";
   // $result = $connection->query($sql);
 
+  // protected by injection
   $statement = $connection->prepare("SELECT * FROM `users` WHERE `username` = ? AND `password` = ? ;");
   $statement->bind_param("ss", $usename, $hashedPassword);
   $statement->execute();
   $result = $statement->get_result();
-  
-  var_dump($result);
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $id = $row["ID"];
+    $usename = $row["username"];
+
+    $_SESSION["user_id"] = $id;
+    $_SESSION["username"] = $usename;
+  }
 }
 
 // I pick up all departments
@@ -37,11 +50,16 @@ $connection->close();
 
 <main>
   <div class="container">
-    <!-- login  -->
-  <?php include __DIR__ . "/partials/login.php" ?>
-
-    <!-- table  -->
-    <?php include __DIR__ . "/partials/department-list.php" ?>
+    <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
+      <?php if(isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
+        <div class="alert alert-success">Logout success</div>
+      <?php } ?>
+      <!-- login  -->
+      <?php include __DIR__ . "/partials/login.php" ?>
+    <?php } else { ?>
+      <!-- table  -->
+      <?php include __DIR__ . "/partials/department-list.php" ?>
+    <?php } ?>
   </div>
 </main>
 

@@ -13,7 +13,7 @@
   <!-- NavBar  -->
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="#">Dashboard</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,16 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul>
+          <div class="d-flex align-items-center gap-2">
+            <?php if(!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) {?>
+            <span>Ciao <?= $_SESSION["username"] ?> </span>
+
+            <form action="logout.php" method="POST">
+              <input type="hidden" name="logout" id="" value="out">
+              <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+            <?php } ?>
+          </div>
         </div>
       </div>
     </nav>
