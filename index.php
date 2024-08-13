@@ -2,6 +2,7 @@
 require_once __DIR__ . "/Models/department.php";
 require_once __DIR__ . "/helpers/database-conn.php";
 require_once __DIR__ . "/helpers/departments-funcion.php";
+require_once __DIR__ . "/helpers/login-function.php";
 
 // Session 
 if (!isset($_SESSION)) {
@@ -16,26 +17,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   $usename = $_POST["username"];
   $password = $_POST["password"];
 
-  $hashedPassword = md5($password);
-
-  // risk of SQL injection
-  // $sql = "SELECT * FROM `users` WHERE `username` = '$usename' AND `password` = '$hashedPassword';";
-  // $result = $connection->query($sql);
-
-  // protected by injection
-  $statement = $connection->prepare("SELECT * FROM `teachers` WHERE `email` = ? AND `password` = ? ;");
-  $statement->bind_param("ss", $usename, $hashedPassword);
-  $statement->execute();
-  $result = $statement->get_result();
-
-  if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $id = $row["id"];
-    $usename = $row["name"];
-
-    $_SESSION["user_id"] = $id;
-    $_SESSION["name"] = $usename;
-  }
+  login($password, $connection, $usename);
 }
 
 if (isset($_SESSION["user_id"]) && isset($_SESSION["name"])) {
