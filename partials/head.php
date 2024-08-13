@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
+<?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
   <!-- Header  -->
   <header class="d-md-none">
     <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
@@ -56,7 +56,7 @@
   <?php } ?>
 
   <div class="container-fluid">
-    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
+    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
     <div class="row">
       <!-- Sidebar -->
       <div

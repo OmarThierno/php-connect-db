@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
   <h2 class="">List of departments</h2>
-    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
-      <div class="me-3"><strong>Welcome</strong> <?php echo $_SESSION ["username"] ?>!</div>
+    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
+      <div class="me-3"><strong>Welcome</strong> <?php echo $_SESSION ["name"] ?>!</div>
     <?php } ?>
 </div>
 <?php if (count($departments) > 0) { ?>
@@ -14,7 +14,6 @@
               <th scope="col">email</th>
               <th scope="col">website</th> -->
         <th scope="col">head of department</th>
-        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -26,7 +25,6 @@
               <td><?= $department->getEmail() ?></td>
               <td><?= $department->getWebsite() ?></td> -->
           <td><?= $department->getHeadOfDepartment() ?></td>
-          <td></td>
         </tr>
       <?php } ?>
     </tbody>

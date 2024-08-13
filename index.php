@@ -23,22 +23,22 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   // $result = $connection->query($sql);
 
   // protected by injection
-  $statement = $connection->prepare("SELECT * FROM `users` WHERE `username` = ? AND `password` = ? ;");
+  $statement = $connection->prepare("SELECT * FROM `teachers` WHERE `email` = ? AND `password` = ? ;");
   $statement->bind_param("ss", $usename, $hashedPassword);
   $statement->execute();
   $result = $statement->get_result();
 
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    $id = $row["ID"];
-    $usename = $row["username"];
+    $id = $row["id"];
+    $usename = $row["name"];
 
     $_SESSION["user_id"] = $id;
-    $_SESSION["username"] = $usename;
+    $_SESSION["name"] = $usename;
   }
 }
 
-if (isset($_SESSION["user_id"]) && isset($_SESSION["username"])) {
+if (isset($_SESSION["user_id"]) && isset($_SESSION["name"])) {
   // I pick up all departments
   $departments = getAllDepartments($connection);
 }
@@ -50,14 +50,14 @@ $connection->close();
 
 <?php include __DIR__ . "/partials/head.php" ?>
 
-<?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
+<?php if (empty($_SESSION["user_id"]) && empty($_SESSION["name"])) { ?>
   <main class="">
 <?php } else { ?>
     <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
 <?php } ?>
 
     <div class="">
-      <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
+      <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["name"])) { ?>
         <?php if (isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
           <div class="alert alert-success text-center mt-4">Logout success</div>
         <?php } ?>
