@@ -1,10 +1,26 @@
 <?php
 
-function getAllDepartments($connection)
+function getAllDepartments($connection, $usename)
 {
-  $sql = "SELECT * FROM `departments`;";
+  // $sql = "SELECT * FROM `departments`;";
 
-  $result = $connection->query($sql);
+  // $result = $connection->query($sql);
+
+  $statement = $connection->prepare("SELECT `departments`.`id`, `departments`.`name`, `departments`.`address`, `departments`.`address`, `departments`.`phone`, `departments`.`email`, `departments`.`website`, `departments`.`head_of_department`
+    FROM `departments`
+    INNER JOIN `degrees`
+    ON `departments`.`id` = `degrees`.`department_id`
+    INNER JOIN `courses`
+    ON `degrees`.`id` = `courses`.`degree_id`
+    INNER JOIN `course_teacher`
+    ON `courses`.`id` = `course_teacher`.`course_id`
+    INNER JOIN `teachers`
+    ON `course_teacher`.`teacher_id` = `teachers`.`id`
+    WHERE `teachers`.`email` = ? ;");
+  
+  $statement->bind_param("s", $usename);
+  $statement->execute();
+  $result = $statement->get_result();
 
   $departments = [];
 

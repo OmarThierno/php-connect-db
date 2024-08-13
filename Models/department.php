@@ -105,9 +105,11 @@ class Department {
    */ 
   public function setWebsite($website)
   {
-    $this->website = $website;
-
-    return $this;
+    if($website !== null) {
+      $this->website = $website;
+    } else {
+      $this->website = '';
+    }
   }
 
   /**

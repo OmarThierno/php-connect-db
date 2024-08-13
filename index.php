@@ -22,7 +22,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
 if (isset($_SESSION["user_id"]) && isset($_SESSION["name"])) {
   // I pick up all departments
-  $departments = getAllDepartments($connection);
+  $departments = getAllDepartments($connection, $usename);
 }
 
 // Close connection with database 
