@@ -1,4 +1,9 @@
-<h2>Lista di Dipartimenti</h2>
+<div class="d-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
+  <h2 class="">List of departments</h2>
+    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
+      <div class="me-3"><strong>Welcome</strong> <?php echo $_SESSION ["username"] ?>!</div>
+    <?php } ?>
+</div>
 <?php if (count($departments) > 0) { ?>
   <table class="table">
     <thead>

@@ -38,7 +38,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   }
 }
 
-if(isset($_SESSION["user_id"]) && isset($_SESSION["username"])) {
+if (isset($_SESSION["user_id"]) && isset($_SESSION["username"])) {
   // I pick up all departments
   $departments = getAllDepartments($connection);
 }
@@ -50,19 +50,24 @@ $connection->close();
 
 <?php include __DIR__ . "/partials/head.php" ?>
 
-<main>
-  <div class="container">
-    <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
-      <?php if(isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
-        <div class="alert alert-success">Logout success</div>
-      <?php } ?>
-      <!-- login  -->
-      <?php include __DIR__ . "/partials/login.php" ?>
-    <?php } else { ?>
-      <!-- table  -->
-      <?php include __DIR__ . "/partials/department-list.php" ?>
-    <?php } ?>
-  </div>
-</main>
+<?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
+  <main class="">
+<?php } else { ?>
+    <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
+<?php } ?>
 
-<?php include __DIR__ . "/partials/foot.php" ?>
+    <div class="">
+      <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["username"])) { ?>
+        <?php if (isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
+          <div class="alert alert-success text-center mt-4">Logout success</div>
+        <?php } ?>
+        <!-- login  -->
+        <?php include __DIR__ . "/partials/login.php" ?>
+      <?php } else { ?>
+        <!-- table  -->
+        <?php include __DIR__ . "/partials/department-list.php" ?>
+      <?php } ?>
+    </div>
+    </main>
+
+    <?php include __DIR__ . "/partials/foot.php" ?>

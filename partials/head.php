@@ -4,40 +4,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>UniPD</title>
 
+  <!-- Bootstrap  -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="./css/style.css">
+  <!-- Fonta-wesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
-  <!-- NavBar  -->
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
+  <!-- Header  -->
+  <header class="d-md-none">
+    <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+      <!-- Container -->
       <div class="container">
-        <a class="navbar-brand" href="#">Dashboard</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-          </ul>
-          <div class="d-flex align-items-center gap-2">
-            <?php if(!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) {?>
-            <span>Ciao <?= $_SESSION["username"] ?> </span>
+        <!-- brand -->
+        <a class="navbar-brand text-uppercase" href="#">UniPD</a>
+        <!-- /brand -->
 
-            <form action="logout.php" method="POST">
-              <input type="hidden" name="logout" id="" value="out">
-              <button class="btn btn-danger" type="submit">Logout</button>
-            </form>
-            <?php } ?>
-          </div>
-        </div>
+        <!-- Hamburger button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <!-- /Hamburger button -->
       </div>
+      <!-- /Container -->
     </nav>
   </header>
-  <!-- /NavBar  -->
+  <!-- /Header  -->
+  <?php } else { ?>
+    <header class="">
+    <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+      <!-- Container -->
+      <div class="container">
+        <!-- brand -->
+        <a class="navbar-brand text-uppercase" href="#">UniPD</a>
+        <!-- /brand -->
+      <!-- /Container -->
+    </nav>
+  </header>
+  <?php } ?>
+
+  <div class="container-fluid">
+    <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["username"])) { ?>
+    <div class="row">
+      <!-- Sidebar -->
+      <div
+        class="sidebar col-md-3 col-lg-2 collapse d-md-block bg-dark pb-3"
+        id="navbarSupportedContent">
+        <div class="d-none d-md-flex text-white justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h5">UniPD</h1>
+        </div>
+
+
+        <ul class="nav nav-pills flex-column pt-4 mb-auto">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link active" aria-current="page">
+              <i class="fa-solid fa-house"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="sponsorizzazione.html" class="nav-link text-white">
+              <i class="fa-solid fa-chart-line"></i>
+              Sponsorizzazione
+            </a>
+          </li>
+          <li>
+            <a href="prodotti.html" class="nav-link text-white">
+              <i class="fa-solid fa-box-archive"></i>
+              Prodotti
+            </a>
+          </li>
+          <li>
+            <a href="nuovo-prodotti.html" class="nav-link text-white">
+              <i class="fa-solid fa-plus"></i>
+              Nuovo prodotto
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              <i class="fa-solid fa-user"></i>
+              Clienti
+            </a>
+          </li>
+          <li>
+            <form action="logout.php" method="POST">
+              <input type="hidden" name="logout" id="" value="out">
+              <button class="btn btn-secondary" type="submit">Logout</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+  <?php } ?>
