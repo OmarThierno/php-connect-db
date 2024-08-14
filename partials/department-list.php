@@ -8,12 +8,12 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">name</th>
-        <th scope="col">address</th>
+        <th scope="col">Name Nepartments</th>
+        <th scope="col">Address</th>
         <!-- <th scope="col">phone</th>
               <th scope="col">email</th>
               <th scope="col">website</th> -->
-        <th scope="col">head of department</th>
+        <th scope="col">Head of Department</th>
       </tr>
     </thead>
     <tbody>

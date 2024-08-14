@@ -69,33 +69,15 @@
 
         <ul class="nav nav-pills flex-column pt-4 mb-auto">
           <li class="nav-item">
-            <a href="index.html" class="nav-link active" aria-current="page">
+            <a href="index.php" class="nav-link active" aria-current="page">
               <i class="fa-solid fa-house"></i>
               Dashboard
             </a>
           </li>
-          <li>
-            <a href="sponsorizzazione.html" class="nav-link text-white">
-              <i class="fa-solid fa-chart-line"></i>
-              Sponsorizzazione
-            </a>
-          </li>
-          <li>
-            <a href="prodotti.html" class="nav-link text-white">
-              <i class="fa-solid fa-box-archive"></i>
-              Prodotti
-            </a>
-          </li>
-          <li>
-            <a href="nuovo-prodotti.html" class="nav-link text-white">
-              <i class="fa-solid fa-plus"></i>
-              Nuovo prodotto
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
+          <li class="mb-3">
+            <a href="students.php" class="nav-link text-white">
               <i class="fa-solid fa-user"></i>
-              Clienti
+              Students
             </a>
           </li>
           <li>

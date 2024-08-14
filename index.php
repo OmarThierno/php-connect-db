@@ -12,17 +12,22 @@ if (!isset($_SESSION)) {
 // Start connection with database 
 $connection = startConnection();
 
+$username = null;
+
 // check your login
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-  $usename = $_POST["username"];
+  $username = $_POST["username"];
   $password = $_POST["password"];
 
-  login($password, $connection, $usename);
+  login($password, $connection, $username);
 }
 
 if (isset($_SESSION["user_id"]) && isset($_SESSION["name"])) {
   // I pick up all departments
-  $departments = getAllDepartments($connection, $usename);
+  if($username === null) {
+    $username = $_SESSION["username"];
+  }
+  $departments = getAllDepartments($connection, $username);
 }
 
 // Close connection with database 

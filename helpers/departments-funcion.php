@@ -1,12 +1,12 @@
 <?php
 
-function getAllDepartments($connection, $usename)
+function getAllDepartments($connection, $username)
 {
   // $sql = "SELECT * FROM `departments`;";
 
   // $result = $connection->query($sql);
 
-  $statement = $connection->prepare("SELECT `departments`.`id`, `departments`.`name`, `departments`.`address`, `departments`.`address`, `departments`.`phone`, `departments`.`email`, `departments`.`website`, `departments`.`head_of_department`
+  $statement = $connection->prepare("SELECT DISTINCT `departments`.`id`, `departments`.`name`, `departments`.`address`, `departments`.`address`, `departments`.`phone`, `departments`.`email`, `departments`.`website`, `departments`.`head_of_department`
     FROM `departments`
     INNER JOIN `degrees`
     ON `departments`.`id` = `degrees`.`department_id`
@@ -18,7 +18,7 @@ function getAllDepartments($connection, $usename)
     ON `course_teacher`.`teacher_id` = `teachers`.`id`
     WHERE `teachers`.`email` = ? ;");
   
-  $statement->bind_param("s", $usename);
+  $statement->bind_param("s", $username);
   $statement->execute();
   $result = $statement->get_result();
 
