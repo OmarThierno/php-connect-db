@@ -75,13 +75,13 @@
             </a>
           </li>
           <li class="mb-3">
-            <a href="students.php" class="nav-link text-white">
+            <a href="./pages/students.php" class="nav-link text-white">
               <i class="fa-solid fa-user"></i>
               Students
             </a>
           </li>
           <li>
-            <form action="logout.php" method="POST">
+            <form action="./pages/logout.php" method="POST">
               <input type="hidden" name="logout" id="" value="out">
               <button class="btn btn-secondary" type="submit">Logout</button>
             </form>

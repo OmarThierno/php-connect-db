@@ -12,9 +12,9 @@ if (!isset($_SESSION)) {
 <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
 
   <?php
-  require_once __DIR__ . "/helpers/students-function.php";
-  require_once __DIR__ . "/helpers/database-conn.php";
-  require_once __DIR__ . "/Models/student.php";
+  require_once(__DIR__ . '/../helpers/students-function.php');
+  require_once(__DIR__ . '/../helpers/database-conn.php');
+  require_once(__DIR__ . '/../Models/student.php');
 
   $connection = startConnection();
 
@@ -81,7 +81,7 @@ if (!isset($_SESSION)) {
 
           <ul class="nav nav-pills flex-column pt-4 mb-auto">
             <li class="nav-item">
-              <a href="index.php" class="nav-link text-white" aria-current="page">
+              <a href="../index.php" class="nav-link text-white" aria-current="page">
                 <i class="fa-solid fa-house"></i>
                 Dashboard
               </a>
@@ -105,6 +105,10 @@ if (!isset($_SESSION)) {
         <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Students</h1>
+            <form class="d-flex gap-2" action="">
+              <input type="text" class="form-control" name="" id="search" placeholder="filter by name">
+              <button type="submit" class="btn btn-primary">apply</button>
+            </form>
           </div>
           <div>
             <table class="table">
@@ -112,7 +116,6 @@ if (!isset($_SESSION)) {
                 <tr>
                   <th scope="col">Name</th>
                   <th scope="col">Surname</th>
-                  <th scope="col">Registration number</th>
                   <th scope="col">Email</th>
                   <th>Action</th>
                 </tr>
@@ -122,10 +125,9 @@ if (!isset($_SESSION)) {
                 <tr>
                   <th scope="row"><?= $student->getName() ?></th>
                   <td><?= $student->getSurname() ?></td>
-                  <td><?= $student->getRegistration_number() ?></td>
                   <td><?= $student->getEmail() ?></td>
                   <td>
-                    <a href="" class="btn btn-success">Show Details</a>
+                    <a href="show.php?student=<?=$student->getId()?>" class="btn btn-success">Show Details</a>
                   </td>
                 </tr>
                 <?php } ?>
