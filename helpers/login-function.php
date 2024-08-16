@@ -17,6 +17,7 @@ function login($password, $connection, $username) {
     $id = $row["id"];
     $name = $row["name"];
 
+    $_SESSION["auth"] = true;
     $_SESSION["user_id"] = $id;
     $_SESSION["name"] = $name;
     $_SESSION["username"] = $username;
