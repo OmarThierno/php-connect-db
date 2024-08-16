@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mt-3 mb-4 pb-3 border-bottom">
-  <h2 class="">List of departments</h2>
+  <h2 class="">List of your Departments</h2>
     <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
       <div class="me-3"><strong>Welcome</strong> <?php echo $_SESSION ["name"] ?>!</div>
     <?php } ?>
@@ -8,7 +8,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name Nepartments</th>
+        <th scope="col">Name Departments</th>
         <th scope="col">Address</th>
         <!-- <th scope="col">phone</th>
               <th scope="col">email</th>
