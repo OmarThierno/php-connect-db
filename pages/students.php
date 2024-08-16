@@ -10,15 +10,20 @@ if (!isset($_SESSION)) {
 ?>
 
 <?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
-
   <?php
   require_once(__DIR__ . '/../helpers/students-function.php');
   require_once(__DIR__ . '/../helpers/database-conn.php');
   require_once(__DIR__ . '/../Models/student.php');
 
+  $search = null;
+
+  if(isset($_GET["search"])) {
+    $search = $_GET["search"];
+  }
+
   $connection = startConnection();
 
-  $students = getStudents($connection, $username);
+  $students = getStudents($connection, $username, $search);
 
   // var_dump($students);
     
@@ -105,12 +110,13 @@ if (!isset($_SESSION)) {
         <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Students</h1>
-            <form class="d-flex gap-2" action="">
-              <input type="text" class="form-control" name="" id="search" placeholder="filter by name">
+            <form class="d-flex gap-2" action="students.php" method="GET">
+              <input type="text" class="form-control" name="search" id="search" placeholder="filter by name">
               <button type="submit" class="btn btn-primary">apply</button>
             </form>
           </div>
           <div>
+            <?php if(count($students) > 0) { ?>
             <table class="table">
               <thead>
                 <tr>
@@ -133,6 +139,9 @@ if (!isset($_SESSION)) {
                 <?php } ?>
               </tbody>
             </table>
+            <?php } else { ?>
+              <h3>No results found!</h3>
+              <?php } ?>
           </div>
         </main>
         <!-- /Main -->

@@ -1,6 +1,14 @@
 <?php 
 
-function getStudents($connection, $username) {
+function getStudents($connection, $username, $search) {
+  if($search === null) {
+    $search = "%";
+  } else if ($search === '') {
+    $search = "%";
+  } else {
+    $search = $search . '%';
+  }
+
   $statement = $connection->prepare("SELECT DISTINCT `students`.`id`, `students`.`degree_id`, `students`.`name`, `students`.`surname`, `students`.`date_of_birth`, `students`.`fiscal_code`, `students`.`enrolment_date`, `students`.`registration_number`, `students`.`email`
     FROM `students`
     INNER JOIN `degrees`
@@ -12,9 +20,10 @@ function getStudents($connection, $username) {
     INNER JOIN `teachers`
     ON `course_teacher`.`teacher_id` = `teachers`.`id`
     WHERE `teachers`.`email` = ? 
+    AND `students`.`name` LIKE ?
     ORDER BY `students`.`name`;");
   
-  $statement->bind_param("s", $username);
+  $statement->bind_param("ss", $username, $search);
   $statement->execute();
   $result = $statement->get_result();
 
