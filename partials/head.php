@@ -71,7 +71,7 @@
           <li class="nav-item">
             <a href="index.php" class="nav-link active" aria-current="page">
               <i class="fa-solid fa-house"></i>
-              Dashboard
+              Departments
             </a>
           </li>
           <li class="mb-3">

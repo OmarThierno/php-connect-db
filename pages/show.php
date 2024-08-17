@@ -22,6 +22,8 @@ if (!isset($_SESSION)) {
   if($student) {
     $student["average_vote"] = floatval($student["average_vote"]);
   }
+
+  $connection->close();
   ?>
 
   <!DOCTYPE html>
@@ -83,7 +85,7 @@ if (!isset($_SESSION)) {
             <li class="nav-item">
               <a href="../index.php" class="nav-link text-white" aria-current="page">
                 <i class="fa-solid fa-house"></i>
-                Dashboard
+                Departments
               </a>
             </li>
             <li class="mb-3">

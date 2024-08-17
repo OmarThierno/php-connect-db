@@ -1,7 +1,7 @@
 <h1 class="text-center mt-5">Login</h1>
 <div class="row justify-content-center">
-  <div class="col-6">
-    <div class="card">
+  <div class="col-10 col-md-8 col-lg-6">
+    <div class="card shadow">
       <div class="card-body">
         <form action="index.php" method="POST">
           <div class="mb-3">

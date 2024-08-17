@@ -26,6 +26,7 @@ if (!isset($_SESSION)) {
   $students = getStudents($connection, $username, $search);
 
   // var_dump($students);
+  $connection->close();
     
   ?>
 
@@ -88,7 +89,7 @@ if (!isset($_SESSION)) {
             <li class="nav-item">
               <a href="../index.php" class="nav-link text-white" aria-current="page">
                 <i class="fa-solid fa-house"></i>
-                Dashboard
+                Departments
               </a>
             </li>
             <li class="mb-3">
