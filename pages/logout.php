@@ -7,7 +7,7 @@ if(!isset($_SESSION)) {
 
 if(isset($_POST["logout"]) && $_POST["logout"] === "out") {
   session_destroy();
-  header("Location: ../index.php?logout=success");
+  header("Location: login.php?logout=success");
 } else {
   header("Location: ../index.php");
 }

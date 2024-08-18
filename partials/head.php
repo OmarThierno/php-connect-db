@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
+<?php if (isset($_SESSION["auth"]) && $_SESSION["auth"]) { ?>
   <!-- Header  -->
   <header class="d-md-none">
     <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">

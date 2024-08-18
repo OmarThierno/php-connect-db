@@ -1,30 +1,27 @@
 <?php
+// Session 
+if (!isset($_SESSION)) {
+  session_start();
+}
+if (empty($_SESSION["auth"])) {
+  header("Location: ./pages/login.php");
+}
+
 require_once __DIR__ . "/Models/department.php";
 require_once __DIR__ . "/helpers/database-conn.php";
 require_once __DIR__ . "/helpers/departments-funcion.php";
 require_once __DIR__ . "/helpers/login-function.php";
 
-// Session 
-if (!isset($_SESSION)) {
-  session_start();
-}
 
 // Start connection with database 
 $connection = startConnection();
 
 $username = null;
 
-// check your login
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-  $username = $_POST["username"];
-  $password = $_POST["password"];
-
-  login($password, $connection, $username);
-}
 
 if (isset($_SESSION["user_id"]) && isset($_SESSION["name"])) {
   // I pick up all departments
-  if($username === null) {
+  if ($username === null) {
     $username = $_SESSION["username"];
   }
   $departments = getAllDepartments($connection, $username);
@@ -37,24 +34,10 @@ $connection->close();
 
 <?php include __DIR__ . "/partials/head.php" ?>
 
-<?php if (empty($_SESSION["user_id"]) && empty($_SESSION["name"])) { ?>
-  <main class="">
-<?php } else { ?>
-    <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
-<?php } ?>
-
-    <div class="">
-      <?php if (empty($_SESSION["user_id"]) && empty($_SESSION["name"])) { ?>
-        <?php if (isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
-          <div class="alert alert-success text-center mt-4">Logout success</div>
-        <?php } ?>
-        <!-- login  -->
-        <?php include __DIR__ . "/partials/login.php" ?>
-      <?php } else { ?>
-        <!-- table  -->
-        <?php include __DIR__ . "/partials/department-list.php" ?>
-      <?php } ?>
-    </div>
-    </main>
-
-    <?php include __DIR__ . "/partials/foot.php" ?>
+<main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
+  <div class="">
+    <!-- table  -->
+    <?php include __DIR__ . "/partials/department-list.php" ?>
+  </div>
+</main>
+<?php include __DIR__ . "/partials/foot.php" ?>

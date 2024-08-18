@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 
 ?>
 
-<?php if (!empty($_SESSION["user_id"]) && !empty($_SESSION["name"])) { ?>
+<?php if ($_SESSION["auth"]) { ?>
   <?php
   require_once(__DIR__ . '/../helpers/students-function.php');
   require_once(__DIR__ . '/../helpers/database-conn.php');
@@ -157,5 +157,5 @@ if (!isset($_SESSION)) {
   </html>
 
 <?php } else {
-  header(("Location: index.php"));
+  header(("Location: ../index.php"));
 } ?>
