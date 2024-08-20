@@ -69,19 +69,44 @@
 
         <ul class="nav nav-pills flex-column pt-4 mb-auto">
           <li class="nav-item">
-            <a href="index.php" class="nav-link active" aria-current="page">
+            <a href="
+            <?php
+             if(isset($isStudentsShow) && $isStudentsShow) {
+              echo "../index.php";
+             } else {
+              echo "index.php";
+             }
+            ?>
+            " class="nav-link text-white  <?php if(!isset($isStudentsShow)) echo "active" ?>" aria-current="page">
               <i class="fa-solid fa-house"></i>
               Departments
             </a>
           </li>
           <li class="mb-3">
-            <a href="./pages/students.php" class="nav-link text-white">
+            <a href="
+            <?php
+             if(isset($isStudentsShow) && $isStudentsShow) {
+              echo "students.php";
+             } else {
+              echo "./pages/students.php";
+             }
+            ?>
+            " class="nav-link text-white <?php if(isset($isStudentsShow)) echo "active" ?>">
               <i class="fa-solid fa-user"></i>
               Students
             </a>
           </li>
           <li>
-            <form action="./pages/logout.php" method="POST">
+            <form action="
+            <?php
+             if(isset($isStudentsShow) && $isStudentsShow) {
+              echo "logout.php";
+             } else {
+              echo "./pages/logout.php";
+             }
+            ?>
+            
+            " method="POST">
               <input type="hidden" name="logout" id="" value="out">
               <button class="btn btn-secondary" type="submit">Logout</button>
             </form>

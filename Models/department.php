@@ -46,8 +46,6 @@ class Department {
   public function setAddress($address)
   {
     $this->address = $address;
-
-    return $this;
   }
 
   /**
@@ -66,8 +64,6 @@ class Department {
   public function setPhone($phone)
   {
     $this->phone = $phone;
-
-    return $this;
   }
 
   /**
@@ -86,8 +82,6 @@ class Department {
   public function setEmail($email)
   {
     $this->email = $email;
-
-    return $this;
   }
 
   /**
@@ -128,7 +122,5 @@ class Department {
   public function setHeadOfDepartment($headOfDepartment)
   {
     $this->headOfDepartment = $headOfDepartment;
-
-    return $this;
   }
 }

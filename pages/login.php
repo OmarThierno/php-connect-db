@@ -49,3 +49,5 @@ $connection->close();
     </div>
   </div>
 </main>
+
+<?php include __DIR__ . "/../partials/foot.php" ?>
