@@ -21,6 +21,8 @@ if (isset($_SESSION["auth"]) && $_SESSION["auth"]) {
 }
 
 $connection->close();
+
+// var_dump($_POST);
 ?>
 <?php include __DIR__ . "/../partials/head.php" ?>
 <?php if (isset($_GET["logout"])  && $_GET["logout"] === 'success') { ?>
@@ -35,13 +37,26 @@ $connection->close();
           <form action="login.php" method="POST">
             <div class="mb-3">
               <label class="form-label" for="username">Username</label>
-              <input class="form-control" type="text" id="username" name="username">
+              <input 
+                class="form-control" 
+                type="text" 
+                id="username" 
+                name="username"
+                <?php if (isset($_POST["error"]) && $_POST["error"] === "error") { ?>
+                  value="<?= $_POST["username"] ?>"
+                <?php } ?>
+                
+              >
             </div>
             <div class="mb-3">
               <label class="form-label" for="password">Password</label>
               <input class="form-control" type="password" id="password" name="password">
+              <div class="valid-feedback">hdhdh</div>
             </div>
 
+            <?php if (isset($_POST["error"]) && $_POST["error"] === "error") { ?>
+              <div class="alert alert-danger mb-3"><?= "username or password is incorrect" ?></div>
+            <?php } ?>
             <button type="submit" class="btn btn-primary">Login</button>
           </form>
         </div>

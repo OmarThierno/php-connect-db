@@ -21,5 +21,7 @@ function login($password, $connection, $username) {
     $_SESSION["user_id"] = $id;
     $_SESSION["name"] = $name;
     $_SESSION["username"] = $username;
+  } else {
+    $_POST["error"] = "error";
   }
 }

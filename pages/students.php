@@ -36,7 +36,7 @@ $isStudentsShow = true;
   <!-- Main -->
   <main class="col-md-9 col-lg-10 vh-100 overflow-scroll">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Students</h1>
+      <h1 class="h2">Your Students</h1>
       <form class="d-flex gap-2" action="students.php" method="GET">
         <input type="text" class="form-control" name="search" id="search" placeholder="filter by name">
         <button type="submit" class="btn btn-primary">apply</button>
