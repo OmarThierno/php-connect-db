@@ -57,7 +57,7 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setDate_of_birth($date_of_birth)
+  public function setDate_of_birth(string $date_of_birth)
   {
     $this->date_of_birth = $date_of_birth;
 
@@ -77,7 +77,7 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setFiscal_code($fiscal_code)
+  public function setFiscal_code(string $fiscal_code)
   {
     $this->fiscal_code = $fiscal_code;
 
@@ -97,7 +97,7 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setRegistration_number($registration_number)
+  public function setRegistration_number(string $registration_number)
   {
     $this->registration_number = $registration_number;
 
@@ -117,7 +117,7 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setEmail($email)
+  public function setEmail(string $email)
   {
     $this->email = $email;
 
@@ -145,7 +145,7 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setLevel($level)
+  public function setLevel(string $level)
   {
     $this->level = $level;
 
@@ -165,11 +165,9 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setAverage_vote($average_vote)
+  public function setAverage_vote(float $average_vote)
   {
     $this->average_vote = $average_vote;
-
-    return $this;
   }
 
   /**
@@ -185,10 +183,8 @@ class StudentDetail{
    *
    * @return  self
    */ 
-  public function setHow_many_time($how_many_time)
+  public function setHow_many_time(int $how_many_time)
   {
     $this->how_many_time = $how_many_time;
-
-    return $this;
   }
 }

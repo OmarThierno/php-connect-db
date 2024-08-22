@@ -63,7 +63,7 @@ class Student {
    *
    * @return  self
    */ 
-  public function setDateOfBirth($dateOfBirth)
+  public function setDateOfBirth(string $dateOfBirth)
   {
     $this->dateOfBirth = $dateOfBirth;
   }
@@ -81,7 +81,7 @@ class Student {
    *
    * @return  self
    */ 
-  public function setFiscal_code($fiscal_code)
+  public function setFiscal_code(string $fiscal_code)
   {
     $this->fiscal_code = $fiscal_code;
   }
@@ -99,7 +99,7 @@ class Student {
    *
    * @return  self
    */ 
-  public function setEnrolment_date($enrolment_date)
+  public function setEnrolment_date(string $enrolment_date)
   {
     $this->enrolment_date = $enrolment_date;
   }
@@ -117,7 +117,7 @@ class Student {
    *
    * @return  self
    */ 
-  public function setRegistration_number($registration_number)
+  public function setRegistration_number(string $registration_number)
   {
     $this->registration_number = $registration_number;
   }
@@ -135,7 +135,7 @@ class Student {
    *
    * @return  self
    */ 
-  public function setEmail($email)
+  public function setEmail(string $email)
   {
     $this->email = $email;
   }

@@ -43,7 +43,7 @@ class Department {
    *
    * @return  self
    */ 
-  public function setAddress($address)
+  public function setAddress(string $address)
   {
     $this->address = $address;
   }
@@ -61,7 +61,7 @@ class Department {
    *
    * @return  self
    */ 
-  public function setPhone($phone)
+  public function setPhone(string $phone)
   {
     $this->phone = $phone;
   }
@@ -79,7 +79,7 @@ class Department {
    *
    * @return  self
    */ 
-  public function setEmail($email)
+  public function setEmail(string $email)
   {
     $this->email = $email;
   }
@@ -97,7 +97,7 @@ class Department {
    *
    * @return  self
    */ 
-  public function setWebsite($website)
+  public function setWebsite(string $website)
   {
     if($website !== null) {
       $this->website = $website;
@@ -119,7 +119,7 @@ class Department {
    *
    * @return  self
    */ 
-  public function setHeadOfDepartment($headOfDepartment)
+  public function setHeadOfDepartment(string $headOfDepartment)
   {
     $this->headOfDepartment = $headOfDepartment;
   }
